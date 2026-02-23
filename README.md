@@ -27,6 +27,105 @@ These approaches increase cost, security risk, and operational complexity.
 
 ---
 
+## 🛠️ Technologies Used
+
+- AWS Lambda – Serverless compute for data extraction
+- Amazon EventBridge – Time-based scheduling
+- Amazon RDS – Source database (MySQL / PostgreSQL)
+- Amazon S3 – CSV storage
+- AWS Secrets Manager – Secure credential storage
+- Amazon CloudWatch – Logs and monitoring
+- IAM, VPC, Security Groups
+
+---
+
+## 🔐 Security Design
+
+- Database credentials stored in AWS Secrets Manager
+- IAM roles follow the principle of least privilege
+- Lambda runs inside a private VPC
+- RDS is not publicly accessible
+- No secrets are hard-coded in the source code
+
+---
+
+## 📄 Data Flow
+
+1. EventBridge triggers the Lambda function based on schedule
+2. Lambda retrieves credentials from Secrets Manager
+3. Lambda connects to RDS inside the VPC
+4. SQL query runs on the target table
+5. Result set is converted into CSV format
+6. CSV file is uploaded to Amazon S3 with a timestamped name
+7. Logs are written to CloudWatch
+
+---
+
+## 📦 Repository Structure
+
+serverless-rds-to-s3-pipeline/
+├── README.md
+├── lambda/
+│ ├── lambda_function.py
+│ └── requirements.txt
+├── docs/
+│ └── architecture.md
+└── .gitignore
+
+---
+
+## 📤 Sample Output
+
+s3://my-rds-export-bucket/rds_exports/
+├── employees_20260222_101200.csv
+├── employees_20260222_221200.csv
+
+---
+
+## 💰 Cost Analysis
+
+| Service | Cost Impact |
+|---------|-------------|
+| EventBridge | ~$1 per million events |
+| Lambda | Pay per execution (milliseconds) |
+| S3 | Pennies for small CSV files |
+| CloudWatch Logs | Negligible |
+| RDS | Existing hourly cost |
+
+**Total cost:** Effectively near zero for low-frequency schedules
+
+---
+
+## ⚠️ Challenges Faced
+
+- **Issue:** Lambda failed with an invalid S3 bucket name
+- **Root Cause:** Trailing whitespace in the bucket name
+- **Resolution:** Sanitized environment variables and validated S3 naming rules
+
+---
+
+## 📈 Future Enhancements
+
+- Incremental exports using `updated_at`
+- Exactly-once delivery using DynamoDB
+- SNS alerts on failures
+- Glue + Athena integration for analytics
+- Terraform / IaC automation
+- CDC-based near real-time ingestion
+
+---
+
+## 🧠 Key Learnings
+
+- Serverless networking with VPC
+- IAM least-privilege role design
+- Secure secrets management
+- Event-driven architectures
+- Debugging AWS SDK validation errors
+- Cost-optimized cloud solutions
+
+---
+
 ## 🎯 Solution
 
 Design and implement a **fully serverless pipeline** that:
@@ -39,13 +138,7 @@ Design and implement a **fully serverless pipeline** that:
 
 ---
 
-## 🏗️ Architecture
+## 🏁 Conclusion
 
-```text
-Amazon EventBridge (Scheduled Trigger)
-            ↓
-        AWS Lambda
-            ↓
-        Amazon RDS
-            ↓
-        Amazon S3
+This project demonstrates a real-world, production-ready serverless data pipeline, showcasing strong DevOps and AWS cloud architecture skills suitable for interviews and portfolio presentation.
+
