@@ -63,21 +63,11 @@ These approaches increase cost, security risk, and operational complexity.
 
 ## 📦 Repository Structure
 
-## 📦 Repository Structure
-
 serverless-rds-to-s3-pipeline/
-
-├── README.md
-
-├── lambda/
-
-│   ├── lambda_function.py
-│   └── requirements.txt
-
-├── docs/
-
-│   └── architecture.md
-└── .gitignore
+├─ lambda/                # Lambda function code
+├─ images/                # Architecture and flow diagrams
+├─ README.md              # Project overview
+└─ docs/                  # Project documentation / notes
 
 ---
 
@@ -85,7 +75,7 @@ serverless-rds-to-s3-pipeline/
 
 s3://my-rds-export-bucket/rds_exports/
 ├── employees_20260222_101200.csv
-├── employees_20260222_221200.csv
+└── employees_20260222_221200.csv
 
 ---
 
