@@ -15,4 +15,4 @@ Amazon EventBridge (Scheduled Trigger)
             ↓
         Amazon S3
 
-<img src="images/pipeline-diagram.png" alt="Alt Text" width="500"/>
+![Pipeline Diagram](images/pipeline_diagram.png)
