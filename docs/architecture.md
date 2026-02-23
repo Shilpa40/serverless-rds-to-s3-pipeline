@@ -15,3 +15,4 @@ Amazon EventBridge (Scheduled Trigger)
             ↓
         Amazon S3
 
+![Pipeline Diagram](images/pipeline-diagram.png)
