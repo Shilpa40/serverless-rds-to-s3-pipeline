@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+*.pyc
+
+# Lambda packages
+lambda.zip
+
+# Environment files
+.env
