@@ -66,11 +66,16 @@ These approaches increase cost, security risk, and operational complexity.
 ## 📦 Repository Structure
 
 serverless-rds-to-s3-pipeline/
+
 ├── README.md
+
 ├── lambda/
+
 │   ├── lambda_function.py
 │   └── requirements.txt
+
 ├── docs/
+
 │   └── architecture.md
 └── .gitignore
 
