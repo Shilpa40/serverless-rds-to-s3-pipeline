@@ -77,6 +77,8 @@ Amazon S3
 CloudWatch Logs
 ```
 
+### Architecture Diagram
+
 ![Architecture Diagram](images/pipeline_diagram.png)
 
 ---
@@ -296,6 +298,17 @@ Design and implement a fully serverless pipeline that:
 * Scales automatically
 * Minimizes infrastructure cost for scheduled execution
 
+---
+## 🚀 Execution Steps
+
+1. Create RDS instance
+2. Store credentials in Secrets Manager
+3. Configure Lambda inside VPC
+4. Attach IAM permissions
+5. Configure EventBridge schedule
+6. Execute export
+7. Validate CSV output in S3
+8. Review CloudWatch logs
 ---
 
 ## 🏁 Conclusion
