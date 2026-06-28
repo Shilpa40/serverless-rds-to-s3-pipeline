@@ -1,3 +1,8 @@
+![AWS](https://img.shields.io/badge/AWS-Cloud-orange)
+![Serverless](https://img.shields.io/badge/Architecture-Serverless-blue)
+![Lambda](https://img.shields.io/badge/AWS-Lambda-yellow)
+![Python](https://img.shields.io/badge/Python-3.x-green)
+
 # 🚀 Serverless RDS to S3 Data Export Pipeline
 
 **Status:** Completed
