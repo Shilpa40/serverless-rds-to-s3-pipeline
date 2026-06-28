@@ -4,6 +4,8 @@
 **Type:** Hands-on AWS Cloud Project
 **Focus:** Serverless • Automation • Data Export • AWS
 
+---
+
 ## 📌 Project Overview
 
 This project implements a serverless scheduled data export pipeline that extracts data from Amazon RDS and stores CSV output in Amazon S3 using AWS managed services.
@@ -16,44 +18,47 @@ The architecture eliminates manual operational overhead while improving security
 
 ## Architecture Highlights
 
-- AWS Lambda runs inside the same VPC as Amazon RDS for secure, private connectivity  
-- Database credentials are retrieved securely from AWS Secrets Manager  
-- Output files are generated as timestamped CSV files and stored in Amazon S3  
+* AWS Lambda runs inside the same VPC as Amazon RDS for secure, private connectivity
+* Database credentials are retrieved securely from AWS Secrets Manager
+* Output files are generated as timestamped CSV files and stored in Amazon S3
 
 ---
 
 ## 🧩 Problem Statement
 
 Traditional RDS data exports often rely on:
-- Long-running EC2 instances
-- Deprecated AWS Data Pipeline
-- Hard-coded credentials
-- High operational and maintenance overhead
+
+* Long-running EC2 instances
+* Deprecated AWS Data Pipeline
+* Hard-coded credentials
+* High operational and maintenance overhead
 
 These approaches increase cost, security risk, and operational complexity.
+
 ---
 
 ## 🛠️ Technologies Used
 
-- AWS Lambda – Serverless compute for data extraction
-- Amazon EventBridge – Time-based scheduling
-- Amazon RDS – Source database (MySQL / PostgreSQL)
-- Amazon S3 – CSV storage
-- AWS Secrets Manager – Secure credential storage
-- Amazon CloudWatch – Logs and monitoring
-- IAM, VPC, Security Groups
+* AWS Lambda – Serverless compute for data extraction
+* Amazon EventBridge – Time-based scheduling
+* Amazon RDS – Source database (MySQL / PostgreSQL)
+* Amazon S3 – CSV storage
+* AWS Secrets Manager – Secure credential storage
+* Amazon CloudWatch – Logs and monitoring
+* IAM, VPC, Security Groups
 
 ---
 
 ## 🔐 Security Design
 
-- Database credentials stored in AWS Secrets Manager
-- IAM permissions were scoped to required service access
-- Lambda runs inside a private VPC
-- RDS is not publicly accessible
-- No secrets are hard-coded in the source code
+* Database credentials stored in AWS Secrets Manager
+* IAM permissions were scoped to required service access
+* Lambda runs inside a private VPC
+* RDS is not publicly accessible
+* No secrets are hard-coded in the source code
 
 ---
+
 ## 🏗️ Architecture
 
 ```text
@@ -70,8 +75,10 @@ CSV Generation
 Amazon S3
     ↓
 CloudWatch Logs
+```
 
 ![Architecture Diagram](images/pipeline_diagram.png)
+
 ---
 
 ## 📄 Data Flow
@@ -85,6 +92,7 @@ CloudWatch Logs
 7. Logs are written to CloudWatch
 
 ---
+
 ## Improvements Implemented
 
 Compared with the initial reference approach:
@@ -98,6 +106,7 @@ Compared with the initial reference approach:
 * Simplified deployment and execution flow
 
 ---
+
 ## ⚠️ Challenges Faced
 
 ### 1. Configuring Secure Connectivity Between Lambda and RDS
@@ -227,7 +236,6 @@ serverless-rds-to-s3-pipeline/
 └── README.md
 ```
 
-
 ---
 
 ## 📤 Sample Output
@@ -242,13 +250,13 @@ s3://my-rds-export-bucket/rds_exports/
 
 ## 💰 Cost Analysis
 
-| Service | Cost Impact |
-|---------|-------------|
-| EventBridge | ~$1 per million events |
-| Lambda | Pay per execution (milliseconds) |
-| S3 | Pennies for small CSV files |
-| CloudWatch Logs | Negligible |
-| RDS | Existing hourly cost |
+| Service         | Cost Impact                 |
+| --------------- | --------------------------- |
+| EventBridge     | ~$1 per million events      |
+| Lambda          | Pay per execution           |
+| S3              | Pennies for small CSV files |
+| CloudWatch Logs | Negligible                  |
+| RDS             | Existing hourly cost        |
 
 **Total cost:** Estimated cost remains minimal for low-frequency scheduled execution.
 
@@ -256,12 +264,12 @@ s3://my-rds-export-bucket/rds_exports/
 
 ## 📈 Future Enhancements
 
-- Incremental exports using `updated_at`
-- Exactly-once delivery using DynamoDB
-- SNS alerts on failures
-- Glue + Athena integration for analytics
-- Terraform / IaC automation
-- CDC-based near real-time ingestion
+* Incremental exports using `updated_at`
+* Exactly-once delivery using DynamoDB
+* SNS alerts on failures
+* Glue + Athena integration for analytics
+* Terraform / IaC automation
+* CDC-based near real-time ingestion
 
 ---
 
@@ -279,13 +287,14 @@ s3://my-rds-export-bucket/rds_exports/
 
 ## 🎯 Solution
 
-Design and implement a **fully serverless pipeline** that:
-- Runs on a fixed schedule
-- Securely connects to RDS inside a VPC
-- Exports relational data as CSV
-- Stores output in Amazon S3
-- Scales automatically
-- Minimizes infrastructure cost for scheduled execution
+Design and implement a fully serverless pipeline that:
+
+* Runs on a fixed schedule
+* Securely connects to RDS inside a VPC
+* Exports relational data as CSV
+* Stores output in Amazon S3
+* Scales automatically
+* Minimizes infrastructure cost for scheduled execution
 
 ---
 
@@ -294,4 +303,3 @@ Design and implement a **fully serverless pipeline** that:
 This project demonstrates practical experience designing and implementing serverless AWS workflows using managed services and event-driven architecture concepts.
 
 The implementation focused on secure connectivity, automation, monitoring, and operational simplicity while improving upon an initial reference design through hands-on experimentation and troubleshooting.
-
