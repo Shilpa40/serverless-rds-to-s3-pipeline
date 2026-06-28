@@ -1,4 +1,9 @@
-🚀 Capstone Project: Serverless RDS to S3 Data Export Pipeline
+# 🚀 Serverless RDS to S3 Data Export Pipeline
+
+**Status:** Completed
+**Type:** Hands-on AWS Cloud Project
+**Focus:** Serverless • Automation • Data Export • AWS
+
 ## 📌 Project Overview
 
 This project implements a serverless scheduled data export pipeline that extracts data from Amazon RDS and stores CSV output in Amazon S3 using AWS managed services.
@@ -43,11 +48,30 @@ These approaches increase cost, security risk, and operational complexity.
 ## 🔐 Security Design
 
 - Database credentials stored in AWS Secrets Manager
-- IAM roles follow the principle of least privilege
+- IAM permissions were scoped to required service access
 - Lambda runs inside a private VPC
 - RDS is not publicly accessible
 - No secrets are hard-coded in the source code
 
+---
+## 🏗️ Architecture
+
+```text
+EventBridge
+    ↓
+AWS Lambda (inside VPC)
+    ↓
+AWS Secrets Manager
+    ↓
+Amazon RDS
+    ↓
+CSV Generation
+    ↓
+Amazon S3
+    ↓
+CloudWatch Logs
+
+![Architecture Diagram](images/pipeline_diagram.png)
 ---
 
 ## 📄 Data Flow
@@ -195,19 +219,24 @@ Implemented timestamp-based naming for generated CSV files.
 
 ## 📦 Repository Structure
 
+```text
 serverless-rds-to-s3-pipeline/
-├─ lambda/                # Lambda function code
-├─ images/                # Architecture and flow diagrams
-├─ README.md              # Project overview
-└─ docs/                  # Project documentation / notes
+├── lambda/
+├── images/
+├── docs/
+└── README.md
+```
+
 
 ---
 
 ## 📤 Sample Output
 
+```text
 s3://my-rds-export-bucket/rds_exports/
 ├── employees_20260222_101200.csv
 └── employees_20260222_221200.csv
+```
 
 ---
 
@@ -256,7 +285,7 @@ Design and implement a **fully serverless pipeline** that:
 - Exports relational data as CSV
 - Stores output in Amazon S3
 - Scales automatically
-- Incurs near-zero cost when idle
+- Minimizes infrastructure cost for scheduled execution
 
 ---
 
