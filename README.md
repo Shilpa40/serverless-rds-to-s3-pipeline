@@ -29,16 +29,16 @@ The architecture eliminates manual operational overhead while improving security
 
 ---
 
-## 🧩 Problem Statement
+## 🧩 The Challenge
 
-Traditional RDS data exports often rely on:
-
-* Long-running EC2 instances
-* Deprecated AWS Data Pipeline
-* Hard-coded credentials
-* High operational and maintenance overhead
+Many database export solutions rely on continuously running infrastructure, hard-coded credentials, or manual execution, increasing operational overhead and security risks. I wanted to build a fully serverless workflow that could automate scheduled exports while following AWS security best practices.
 
 These approaches increase cost, security risk, and operational complexity.
+
+---
+## 🧩 The Challenge
+
+Many database export solutions rely on continuously running infrastructure, hard-coded credentials, or manual execution, increasing operational overhead and security risks. I wanted to build a fully serverless workflow that could automate scheduled exports while following AWS security best practices.
 
 ---
 
@@ -292,18 +292,6 @@ s3://my-rds-export-bucket/rds_exports/
 
 ---
 
-## 🎯 Solution
-
-Design and implement a fully serverless pipeline that:
-
-* Runs on a fixed schedule
-* Securely connects to RDS inside a VPC
-* Exports relational data as CSV
-* Stores output in Amazon S3
-* Scales automatically
-* Minimizes infrastructure cost for scheduled execution
-
----
 ## 🚀 Execution Steps
 
 1. Create RDS instance
